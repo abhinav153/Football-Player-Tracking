@@ -14,8 +14,9 @@ Dataset used:[Soccer video & Position dataset](https://datasets.simula.no/alfhei
 ### 1. Creating a labelled dataset using various tracking algorithms
    I am going to use a tracking algorithm implementations provided within the OpenCv module to create a labelled dataset. The motivation behind this is that
    manual annotation of the data is very time consuming.What if we could the train a machine learning model to annotate data for us. Though this procedure might
-   not be robust yet, but it is certainly a starting point<br>
-   ![video](https://github.com/abhinav153/Football-Player-Tracking/blob/main/clips/clip1.gif)
+   not be robust yet, but it is certainly a starting point.<br>
+   
+   ![CSRT tracking system](https://github.com/abhinav153/Football-Player-Tracking/blob/main/clips/clip1.gif)
 
 ### 2. Use a custom model for idendtifying players, and mapping to a live 2d pitch system
 
