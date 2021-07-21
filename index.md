@@ -13,7 +13,7 @@ Football is one of the most followed sports across the world,in recent years the
    I am going to use a tracking algorithm implementations provided within the OpenCv module to create a labelled dataset. The motivation behind this is that
    manual annotation of the data is very time consuming.What if we could the train a machine learning model to annotate data for us. Though this procedure might
    not be robust yet, but it is certainly a starting point<br>
-   ![video]("clips/clip1.gif")
+   ![video]("https://github.com/abhinav153/Football-Player-Tracking/blob/main/clips/clip1.gif")
 
 ## References
 1. [Football Games Analysis from video stream with Machine Learning](https://medium.com/@nicolo.lucchesi?p=745e62b36295) 
