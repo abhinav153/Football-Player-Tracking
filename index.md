@@ -18,7 +18,7 @@ Dataset used:[Soccer video & Position dataset](https://datasets.simula.no/alfhei
    
    ![CSRT tracking system](https://github.com/abhinav153/Football-Player-Tracking/blob/main/clips/clip1.gif)
 
-### 2. Use a custom model for idendtifying players, and mapping to a live 2d pitch system
+### 2. Use a custom model for identifying players, and mapping to a live 2d pitch system
 
 ### 3. Calculate metric based on identified player positions
 
