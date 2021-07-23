@@ -12,14 +12,17 @@ Enhance Team Sport Analysis - 2018](https://openaccess.city.ac.uk/18380/8/paper3
 2. []()
 
 ## Aims
-1. Create a labelled Dataset using tracker systems using different algorithms 
-2. Use the labelled dataset to create a object detection framework for a live videostream and transform them to 2d co-ordinate system i.e a 2d footall pitch
-3. Use the mapped 2d-co-ordinates systems to calculate average team structure of the team and any other useful metrics
+1. Using homography to <br>
+  1.1 Create panoramic views<br>
+  1.2 Projecting cuurent video frame to panoramic view<br>
+  1.3 Projecting current video frame to to 2d pitch representation
+3. Try out various player tracking approaches to identify player positions on the 2d homagraphic pitch view
+4. Calculate various football analysis metric possible,like<br>
+  4.1 Player trajectories<br>
+  4.2 Team structure<br>
 
-### 1. Creating a labelled dataset using various tracking algorithms
-   I am going to use a tracking algorithm implementations provided within the OpenCv module to create a labelled dataset. The motivation behind this is that
-   manual annotation of the data is very time consuming.What if we could the train a machine learning model to annotate data for us. Though this procedure might
-   not be robust yet, but it is certainly a starting point.<br>
+### 1. Using Homographic projections
+   First step is to be able to create a panoramic view of the live football video stream.<br>
    
    ![CSRT tracking system](https://github.com/abhinav153/Football-Player-Tracking/blob/main/clips/clip1.gif)
 
