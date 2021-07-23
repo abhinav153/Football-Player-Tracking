@@ -24,7 +24,6 @@ Enhance Team Sport Analysis - 2018](https://openaccess.city.ac.uk/18380/8/paper3
 ### 1. Using Homographic projections
    First step is to be able to create a panoramic view of the live football video stream.<br>
    
-   ![CSRT tracking system](https://github.com/abhinav153/Football-Player-Tracking/blob/main/clips/clip1.gif)
 
 ### 2. Use a custom model for identifying players, and mapping to a live 2d pitch system
 
