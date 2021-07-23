@@ -6,6 +6,11 @@ Football is one of the most followed sports across the world,in recent years the
 
 Dataset used:[Soccer video & Position dataset](https://datasets.simula.no/alfheim/)
 
+## Literature review
+1. [Bring it to the Pitch: Combining Video and Movement Data to
+Enhance Team Sport Analysis - 2018](https://openaccess.city.ac.uk/18380/8/paper319.pdf)
+2. []()
+
 ## Aims
 1. Create a labelled Dataset using tracker systems using different algorithms 
 2. Use the labelled dataset to create a object detection framework for a live videostream and transform them to 2d co-ordinate system i.e a 2d footall pitch
