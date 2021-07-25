@@ -30,7 +30,7 @@ if __name__ == '__main__':
 
 	video_files = sorted(glob.glob('../video_dataset/SVPPD/*.h264'))[start_segment_no:end_segment_no]
 	
-	with open('files.txt', 'w') as f:
+	with open('../files.txt', 'w') as f:
 		for file in video_files:
 			f.write('file ' + "'" + file +"'" +'\n')
 
