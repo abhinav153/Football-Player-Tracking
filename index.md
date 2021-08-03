@@ -4,9 +4,9 @@ Computer vision based framwork for player tracking and analysis in football vide
 
 ## Description
 In this project i aim is to do Computer Vision based analysis on a live football video stream or a recorded football match which can be used as a football analytics tool. My plan is primarily based on the ideas preseneted in this paper [1](https://openaccess.city.ac.uk/18380/8/paper319.pdf) with the end goal that the same system can be portable to be used in other sports too. Generally a video stream from a live match only gives view of a certain section of the pitch, one of my things i aim to  is to be able to convert it to whole pitch representation i.e a panoramic view for easier interpration in terms of a global view.<br>
-![A general stream of a football match](clip2.gif)
+![A general stream of a football match](clips/clip2.gif)<br>
 Along the with the panoramic view generator, i will also try to make 2d pitch representation of the pitch to map the live player positions.The 2-d mappings will be used to calculate various foobtall metrics like player trajectories, team structures etc.
-![2d-pitch-representation](2d-pitch-representation.png)
+![2d-pitch-representation](clips/2d-pitch-representation.png)<br>
 I plan to read to more research papers on basis of the use-cases of which tools will be required to do the above mentioned stuff
 
 
