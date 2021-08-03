@@ -28,4 +28,3 @@ Datasets that can be used:[Soccer video & Position dataset](https://datasets.sim
 ## Literature review
 1. [Bring it to the Pitch: Combining Video and Movement Data to
 Enhance Team Sport Analysis - 2018](https://openaccess.city.ac.uk/18380/8/paper319.pdf)
-2. []()
