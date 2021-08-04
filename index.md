@@ -7,7 +7,11 @@ In this project i aim is to do Computer Vision based analysis on a live football
 ![A general stream of a football match](clips/clip2.gif)<br><br>
 Along the with the panoramic view generator, i will also try to make 2d pitch representation of the pitch to map the live player positions on to it.The 2-d mappings will be used to calculate various foobtall metrics like player trajectories, team structures etc.<br><br>
 ![2d-pitch-representation](clips/2d-pitch-representation.png)<br><br>
-I plan to read to more research papers on basis of the use-cases of which tools will be required to do the above mentioned stuff
+I plan to read to more research papers on basis of the use-cases of which tools will be required to do the above mentioned stuff<br>
+Some of the topics covered in this project would be:<br>
+**Position mapping** - positions from the video are mapped to a physical reference frame, in our case the soccer pitch<br>
+**Detect and track objects of interest** - In case of team sport video analysis, these are typically the
+teams’ players and the ball <br>
 
 
 Datasets that can be used:[Soccer video & Position dataset](https://datasets.simula.no/alfheim/)
