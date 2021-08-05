@@ -11,7 +11,7 @@ I plan to read to more research papers on basis of the use-cases of which tools 
 Some of the topics covered in this project would be:<br>
 **Position mapping** - positions from the video are mapped to a physical reference frame, in our case the soccer pitch<br>
 **Detect and track objects of interest** - In case of team sport video analysis, these are typically the
-teams’ players and the ball <br>
+teams’ players and the ball possibly using deep learning object tracking algorithms<br>
 
 
 Datasets that can be used:[Soccer video & Position dataset](https://datasets.simula.no/alfheim/)
@@ -23,7 +23,7 @@ Datasets that can be used:[Soccer video & Position dataset](https://datasets.sim
   1.1 Create panoramic views<br>
   1.2 Projecting current video frame to panoramic view<br>
   1.3 Projecting current video frame to to 2d pitch representation
-3. Try out various player tracking approaches to identify player positions on the 2d homagraphic pitch view
+3. Try out various player tracking approaches to identify player positions on the 2d homagraphic pitch view using CNN's and other such architectures
 4. Calculate various football analysis metric possible,like<br>
   4.1 Player trajectories<br>
   4.2 Team structure<br>
