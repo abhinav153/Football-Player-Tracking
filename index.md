@@ -1,6 +1,6 @@
 
 # Football-Player-Tracking
-Computer vision based framwork for player tracking and analysis in football videos
+Computer vision based and deep learning based framework for player tracking and analysis in football videos
 
 ## Description
 In this project i aim is to do Computer Vision based analysis on a live football video stream or a recorded football match which can be used as a football analytics tool. My plan is primarily based on the ideas preseneted in this paper [[1]](https://openaccess.city.ac.uk/18380/8/paper319.pdf) with the end goal that the same system can be portable to be used in other sports too. Generally a video stream from a live match only gives view of a certain section of the pitch(shown in below gif), one of  things i aim to  is to be able to convert it to whole pitch representation i.e a panoramic view for easier interpration in terms of a global view.<br><br>
