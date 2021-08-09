@@ -1,7 +1,8 @@
 '''
-This file will be used to save the images to be used fot generating the pannoramic view of the football field
-To generate the panoramic view , we need to manually select series of images 
-which are representative of different views of the football pitch .
+This file will be used to save the images to be used for generating the pannoramic view of the football field
+To generate the panoramic view , we need to select series of images which are representative of different views of the football pitch .
+This script will save images of the first 2 minutes of the match to generate the panoramic view.
+
 This views will be stiched together to to generate a panoramic view using homography
 '''
 
@@ -15,32 +16,7 @@ def calculate_fps(prev_frame_time,next_frame_time):
     fps = 1/(next_frame_time-prev_frame_time)
     return int(fps)
 
-def save_frames(frame,i):
-    '''
-    if a particular key 's' is holded for some ,the particular frame is stored in a list, 
-    which will later be used to generate a panoramic view
-    '''
-    global panoramic_frames 
-    panoramic_frames.append(frame)
-    cv2.imwrite('../panoramic_images/frame'+str(i)+'.jpg',frame)
-    print('frame',i,' saved')
     
-
-
-
-def create_panorama(frames):
-    print('started creating panorama')
-    stitcher = cv2.Stitcher.create()
-    (status,result) = stitcher.stitch(frames)
-
-    if (status == cv2.STITCHER_OK):
-        cv2.imshow('panorams',result)
-        print('panorama generated')
-        cv2.waitKey(0)
-        cv2.destroyAllWindows()
-
-    else:
-        print('panorama not generated')
 
 if __name__ == '__main__': 
 
@@ -51,21 +27,18 @@ if __name__ == '__main__':
 
     #capture video stream
     video_stream = cv2.VideoCapture(r'{}'.format(file_path))
-
-    #setting fps
-    video_stream. set(cv2.CAP_PROP_FPS, 60)
-
+    
 
     #read the first frame of the video
     ret,frame = video_stream.read()
 
     prev_frame_time = 0
+    start = time.time()
 
     i=1
     #iterate over frames
     while True:
 
-        video_stream.set(cv2.CAP_PROP_FPS, 60)
         _,frame = video_stream.read()
 
 
@@ -84,11 +57,19 @@ if __name__ == '__main__':
         fps = calculate_fps(prev_frame_time,next_frame_time)
 
         #resize frame
-        frame = cv2.resize(frame,(500,300))
+        frame = cv2.resize(frame,(1200,800))
+
+        #time elapsed in seconds
+        elapsed = int(time.time() - start)
+
+        #save images if elapsed time is less that equal to 120seconds
+        if elapsed<=120:
+            cv2.imwrite('../panoramic_images/current_buffer/frame'+str(elapsed)+'.jpeg',frame)
 
        
       
         cv2.putText(frame, 'fps:'+str(fps), (0,50),cv2.FONT_HERSHEY_SIMPLEX,1,(255,255,255),1) 
+        cv2.putText(frame,'time: '+str(elapsed),(1000,50),cv2.FONT_HERSHEY_SIMPLEX,1,(255,255,255))
         cv2.imshow('frame',frame)
 
 
@@ -97,14 +78,6 @@ if __name__ == '__main__':
         key =cv2.waitKey(1)
         if key == ord('q'):
             break
-        elif key == ord('s'):
-            save_frames(frame,i)
-            i+=1
-        else:
-            continue
-
-      
-
 
 
     #release the video_stream object and keyboard listener
