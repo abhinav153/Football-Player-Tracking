@@ -1,6 +1,6 @@
 
 import cv2
-
+import numpy as np
 
 
 
@@ -84,8 +84,8 @@ class Features:
         '''
         if isinstance(images,list):
             for (i,img) in enumerate(images):
-                keypoints,desscriptors = self.feature.detectAndCompute(img,None)
-                self.image_features[i] = [img,keypoints,desscriptors]
+                keypoints,descriptors = self.feature.detectAndCompute(img,None)
+                self.image_features[i+1] = [img,keypoints,descriptors]
         else:
             keypoints,desscriptors = self.feature.detectAndCompute(img,None)
             return keypoints,desscriptors
@@ -105,7 +105,74 @@ class Matcher:
     '''
     Is used fot feature matching between the images
     '''
+    def __init__(self,type,norm,crossCheck = False): 
+        '''
+        create a matcher object
+        type = bruteforce/?
+        crosscheck = only find best match if true
+        norm = L1,L2
+        '''
+        if type=='bruteforce':
+            if norm == 'L1':    
+                self.matcher = cv2.BFMatcher_create(cv2.NORM_L1,crossCheck)
+            elif norm == 'L2':  
+                self.matcher = cv2.BFMatcher_create(cv2.NORM_L2,crossCheck)
+
+        self.matches = {}
+        self.good_matches = {}
+
+    def find_matches(self,image_features,k):
+        '''
+        find matches between images
+        k = No of best matching features  for a pair of images
+        '''  
+       
+        no_of_images = len(list(image_features.keys()))  
+        for i in range(1,no_of_images+1):
+            for j in range(i+1,no_of_images+1):
+                desecriptor1 = image_features[i][2]
+                desecriptor2 = image_features[j][2]
+                print('finding matches between image ',i,'&',j)
+                matches = self.matcher.knnMatch(desecriptor1,desecriptor2,k)
+                self.matches[str(i)+'&'+ str(j)] = {'matches':matches,'images':[image_features[i][0],image_features[j][0]]}
+            print('***')
+
+    def filter_good_matches(self,ratio_thresh = 0.6):
+        '''
+        Applies Lowes ratio test to filter out good matches and store for each image pair
+
+        '''
+        for image_pair in self.matches.keys():
+            self.good_matches[image_pair] = []
+            for m,n in self.matches[image_pair]['matches']:  
+                if m.distance < ratio_thresh * n.distance:
+                    self.good_matches[image_pair].append(m)
 
 
 
+class Homography:
+    '''
+    Will be used to create a panoroma with the good image matches
+    '''
+
+    @staticmethod
+    def draw_panorama(img1_features,img2_features,good_matches):  
+        '''
+        draw panorama images for image pair matchings
+        '''
+
+        if not good_matches:  
+                return
+
+
+        img1,kp1,desc1 = img1_features[0],img1_features[1],img1_features[2]
+        img2,kp2,desc2 = img2_features[0],img2_features[1],img2_features[2]
         
+        reference_pts = np.array([kp2[match.trainIdx].pt for match in good_matches],dtype = np.float32)
+        query_pts     = np.array([kp1[match.queryIdx].pt for match in good_matches],dtype = np.float32)
+
+
+        if len(reference_pts) >= 4 and len(query_pts) >=4:
+            h,status = cv2.findHomography(query_pts,reference_pts,cv2.RANSAC,1.0)
+
+            Images.show_img(cv2.warpPerspective(img2,h,(img2.shape[0],img2.shape[1])))
